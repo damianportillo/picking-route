@@ -33,6 +33,14 @@ import streamlit as st
 from streamlit import cache
 
 import os
+
+
+# Set page configuration
+st.set_page_config(page_title ="Improve Warehouse Productivity using Order Batching",
+                    initial_sidebar_state="expanded",
+                    layout='wide',
+                    page_icon="🛒")
+
 # Everything is accessible via the st.secrets dict:
 st.write("DB username:", st.secrets["db_username"])
 st.write("DB password:", st.secrets["db_password"])
@@ -44,17 +52,12 @@ st.write(
     os.environ["db_username"] == st.secrets["db_username"],
 )
 
-# Set page configuration
-st.set_page_config(page_title ="Improve Warehouse Productivity using Order Batching",
-                    initial_sidebar_state="expanded",
-                    layout='wide',
-                    page_icon="🛒")
-
 # Set up the page
 @st.cache(persist=False,
           allow_output_mutation=True,
           suppress_st_warning=True,
           show_spinner= True)
+
 # Preparation of data
 def load(filename, n):
     df_orderlines = pd.read_csv(IN + filename).head(n)
