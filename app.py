@@ -32,6 +32,18 @@ from utils.results.plot import (
 import streamlit as st
 from streamlit import cache
 
+import os
+# Everything is accessible via the st.secrets dict:
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"])
+
+# And the root-level secrets are also accessible as environment variables:
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_username"] == st.secrets["db_username"],
+)
+
 # Set page configuration
 st.set_page_config(page_title ="Improve Warehouse Productivity using Order Batching",
                     initial_sidebar_state="expanded",
