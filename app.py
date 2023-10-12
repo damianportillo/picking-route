@@ -49,7 +49,7 @@ st.set_page_config(page_title ="Improve Warehouse Productivity using Order Batch
 # And the root-level secrets are also accessible as environment variables:
 st.write(
     "Has environment variables been set:",
-    os.environ["db_username"] == st.secrets["db_username"],
+    # os.environ["db_username"] == st.secrets["db_username"],
 )
 
 # Set up the page
